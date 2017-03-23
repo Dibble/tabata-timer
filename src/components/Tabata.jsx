@@ -6,7 +6,7 @@ import Configuration from './Configuration'
 class Tabata extends Component {
   constructor (props) {
     super(props)
-    this.state = { seconds: 20, currentTime: null, endTime: null, rounds: 5 }
+    this.state = { configuration: { seconds: 20 }, currentTime: null, endTime: null }
 
     this.startTimer = this.startTimer.bind(this)
     this.stopTimer = this.stopTimer.bind(this)
@@ -15,8 +15,8 @@ class Tabata extends Component {
   }
 
   startTimer () {
-    this.setState({ endTime: new Date().getTime() + (this.state.seconds * 1000) })
-    this.intervalId = setInterval(this.timerUpdate, 10)
+    this.setState({ endTime: new Date().getTime() + (this.state.configuration.seconds * 1000) })
+    this.intervalId = setInterval(this.timerUpdate, 1)
   }
 
   stopTimer () {
@@ -27,7 +27,7 @@ class Tabata extends Component {
   configurationChange (event) {
     let newState = {}
     newState[event.target.id] = event.target.value
-    this.setState(newState)
+    this.setState({ configuration: newState })
   }
 
   timerUpdate () {
