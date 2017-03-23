@@ -7,3 +7,7 @@ gulp.task('bundle', function () {
     .pipe(webpack(webpackConfig))
     .pipe(gulp.dest('dist'))
 })
+
+gulp.task('default', ['bundle'], function () {
+  gulp.watch(['src/**/*.jsx', 'src/**/*.js'], ['bundle'])
+})
