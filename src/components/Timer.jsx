@@ -14,10 +14,15 @@ class Timer extends Component {
   constructor (props) {
     super(props)
 
-    this.state = { currentTime: props.currentTime, endTime: props.endTime }
+    this.state = { currentTime: props.currentTime, endTime: props.endTime, currentRound: props.currentRound }
+    this.endRound = props.endRound
   }
 
   componentWillReceiveProps (nextProps) {
+    if (nextProps.currentTime !== null && nextProps.currentTime !== this.state.currentTime && nextProps.currentTime >= this.state.endTime) {
+      this.endRound()
+    }
+
     this.setState(nextProps)
   }
 
@@ -26,7 +31,11 @@ class Timer extends Component {
     let minutes = Math.floor(timeLeft / 60)
     let seconds = (timeLeft % 60).toFixed(3)
 
-    return (<div>{this.state.endTime !== null ? `${padStart(minutes, 2)}:${padStart(seconds, 5)}` : '00:00.000'}</div>)
+    return (<div>
+      <span>{`Round: ${this.state.currentRound}`}</span>
+      <br />
+      <span>{this.state.endTime !== null ? `${padStart(minutes, 2)}:${padStart(seconds, 6)}` : '00:00.000'}</span>
+    </div>)
   }
 }
 
