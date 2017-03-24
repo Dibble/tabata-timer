@@ -25,7 +25,7 @@ class Tabata extends Component {
   }
 
   configurationChange (event) {
-    let newState = {}
+    let newState = Object.assign({}, this.state.configuration)
     newState[event.target.id] = event.target.value
     this.setState({ configuration: newState })
   }

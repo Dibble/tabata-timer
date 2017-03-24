@@ -23,7 +23,7 @@ class Timer extends Component {
 
   render () {
     let timeLeft = (this.state.endTime - new Date().getTime()) / 1000.0
-    let minutes = (timeLeft / 60).toFixed(0)
+    let minutes = Math.floor(timeLeft / 60)
     let seconds = (timeLeft % 60).toFixed(3)
 
     return (<div>{this.state.endTime !== null ? `${padStart(minutes, 2)}:${padStart(seconds, 5)}` : '00:00.000'}</div>)
