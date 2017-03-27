@@ -14,7 +14,7 @@ class Timer extends Component {
   constructor (props) {
     super(props)
 
-    this.state = { currentTime: props.currentTime, endTime: props.endTime, currentRound: props.currentRound }
+    this.state = props
     this.endRound = props.endRound
   }
 
@@ -32,9 +32,7 @@ class Timer extends Component {
     let seconds = (timeLeft % 60).toFixed(3)
 
     return (<div>
-      <span>{`Round: ${this.state.currentRound}`}</span>
-      <br />
-      <span>{this.state.endTime !== null ? `${padStart(minutes, 2)}:${padStart(seconds, 6)}` : '00:00.000'}</span>
+      {this.state.endTime !== null ? `${padStart(minutes, 2)}:${padStart(seconds, 6)}` : '00:00.000'}
     </div>)
   }
 }
