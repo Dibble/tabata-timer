@@ -6,9 +6,9 @@ import Status from './Status'
 
 const Tabata = ({ rounds, currentRound, currentTime, endTime, roundEnd, configurationChange, startTimer, stopTimer }) =>
   <div>
-    <Status currentRound={this.state.rounds[this.state.currentRound]} />
-    <Timer currentTime={this.state.currentTime} endTime={this.state.endTime} endRound={this.roundEnd} />
-    <Configuration configurationChange={this.configurationChange} startFunc={this.startTimer} stopFunc={this.stopTimer} />
+    <Status currentRound={rounds[currentRound]} />
+    <Timer currentTime={currentTime} endTime={endTime} endRound={roundEnd} />
+    <Configuration configurationChange={configurationChange} startFunc={startTimer} stopFunc={stopTimer} />
   </div>
 
 export default Tabata
